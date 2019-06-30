@@ -9,6 +9,7 @@ import (
 	"golang.org/x/xerrors"
 )
 
+// GenerateJSONReport generates a report in JSON format for the Git stats.
 func GenerateJSONReport(reportDirectory string, stats GitStats) error {
 	reportFileName := path.Join(reportDirectory, "stats.json")
 	reportFile, err := os.OpenFile(reportFileName, os.O_WRONLY|os.O_CREATE, 0644)

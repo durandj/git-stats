@@ -10,7 +10,7 @@ import (
 	"github.com/durandj/git-stats/analyzer"
 )
 
-// VERSION is the application version string whic his populated at
+// Version is the application version string which is populated at
 // build time.
 var Version = "UNKNOWN"
 
@@ -93,6 +93,7 @@ func init() {
 	)
 }
 
+// Execute runs the root CLI command.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

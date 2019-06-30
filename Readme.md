@@ -1,3 +1,6 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/durandj/git-stats)](https://goreportcard.com/report/github.com/durandj/git-stats)
+[![GitHub](https://img.shields.io/github/license/durandj/git-stats.svg)](https://github.com/durandj/git-stats/blob/master/License.md)
+
 # git-stats
 
 A CLI tool for generating stats on Git repositories.

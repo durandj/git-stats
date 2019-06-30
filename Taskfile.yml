@@ -1,0 +1,47 @@
+# https://taskfile.org
+
+version: '2'
+
+vars:
+  BIN: git-stats
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  build:
+    sources:
+      - ./**/*.go
+
+    vars:
+      VERSION:
+        sh: git describe --tags --always --dirty
+
+    cmds:
+      - go build
+          -ldflags "-s -w -X github.com/durandj/git-stats/pkg/gitignore.VERSION={{ .VERSION }}"
+          -o {{ .BIN }}
+          ./main.go
+
+  clean:
+    cmds:
+      - rm --force --recursive {{ .BIN }} bin
+
+  install:
+    cmds:
+      - go get github.com/onsi/ginkgo/ginkgo
+
+  lint:
+    sources:
+      - ./**/*.go
+
+    cmds:
+      - golang-lint run
+
+  test:
+    sources:
+      - ./**/*.go
+
+    cmds:
+      - ginkgo -v -p -race --randomizeAllSpecs ./pkg/gitignore
